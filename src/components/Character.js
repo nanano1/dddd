@@ -33,10 +33,10 @@ function Character() {
   const handleCharacterSelect = (index) => {
     const selectedCharacter = characters[index];
     setCurrentCharacterIndex(index);
-    setActiveTab(null); // 重置选项卡状态
+    setActiveTab(null); // 重置选项卡状态s
     
     // 更新URL路由
-    navigate(`/character/${selectedCharacter.id}`);
+    navigate(`/characters/${selectedCharacter.id}`);
   };
 
   // 渲染带图片的内容

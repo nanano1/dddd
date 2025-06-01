@@ -146,15 +146,17 @@ export const cocConfig = {
   guildType: '商会势力',
   description: '负责审理善恶、维护各领域安全的司法机构，其权力成员称为"超决者"，在任何人面前均可行使对中立和邪恶的法权，公正、善有威信。',
   
-  centerLogo: '/assets/images/worldview/ADLOGO.png',
-  backgroundImage: '/assets/images/worldview/court-bg.png',
+  centerLogo: '/assets/images/worldview/COC标准制式.png',
+  backgroundImage: '/assets/images/worldview/cocbg.png',
   
   bottomIcons: [
-    { image: '/assets/images/worldview/ADLOGO.png', title: '审判庭徽章' },
-    { image: '/assets/images/worldview/COCLOGO.png', title: '权力等级' },
-    { image: '/assets/images/worldview/A.GLOGO.png', title: '法典' },
-    { image: '/assets/images/worldview/CSbackground.png', title: '审判程序' },
-    { image: '/assets/images/worldview/BHLOGO.png', title: '历史沿革' }
+    { image: '/assets/images/worldview/COC标准制式.png', title: '标准制式' },
+    { image: '/assets/images/worldview/coc信物.png', title: '信物' },
+    { image: '/assets/images/worldview/coc等级排序.png', title: '等级排序' },
+    { image: '/assets/images/worldview/COC平面图1.png', title: '平面图1' },
+    { image: '/assets/images/worldview/COC平面图2.png', title: '平面图2' },
+    { image: '/assets/images/worldview/COC平面图3.png', title: '平面图3' },
+    { image: '/assets/images/worldview/COC平面图4.png', title: '平面图4' },
   ],
   
   // 对应每个选项卡的描述内容
@@ -167,7 +169,7 @@ export const cocConfig = {
   ],
   
   characterAvatars: [
-    { image: '/assets/images/worldview/judge1.png', name: '首席审判官', title: '超决者' },
+    { image: '/assets/images/characters/aurora-avatar.png', name: '首席审判官', title: '超决者' },
     { image: '/assets/images/worldview/judge2.png', name: '执法者', title: '审判员' }
   ],
   
@@ -194,8 +196,8 @@ export const judgmentCourtConfig = {
   backgroundImage: '/assets/images/worldview/court-bg.png',
   
   bottomIcons: [
-    { image: '/assets/images/worldview/ADLOGO.png', title: '审判庭徽章' },
-    { image: '/assets/images/worldview/COCLOGO.png', title: '权力等级' },
+    { image: '/assets/images/worldview/ADLOGO.png', title: '标准制式' },
+    { image: '/assets/images/worldview/COCLOGO.png', title: '标准色' },
     { image: '/assets/images/worldview/A.GLOGO.png', title: '法典' },
     { image: '/assets/images/worldview/CSbackground.png', title: '审判程序' },
     { image: '/assets/images/worldview/BHLOGO.png', title: '历史沿革' }
@@ -354,7 +356,7 @@ export const psychicDeptConfig = {
 export const allGuildConfigs = {
   adventurerGuild: adventurerGuildConfig,
   crystalSchool: crystalSchoolConfig,
-  coc: cocConfig,
+  cocGuild: cocConfig,
   judgmentCourt: judgmentCourtConfig,
   lightGuard: lightGuardConfig,
   darkRaven: darkRavenConfig,

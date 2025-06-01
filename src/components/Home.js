@@ -9,26 +9,18 @@ function Home() {
     {
       id: 1,
       image: '/assets/images/ui/首页轮播图1@2x.png',
-      title: '欢迎来到神秘世界',
-      subtitle: '探索未知的冒险之旅'
     },
     {
       id: 2,
       image: '/assets/images/ui/首页条形图1@2x.png',
-      title: '强大的工会联盟',
-      subtitle: '加入你的命运之选'
     },
     {
       id: 3,
-      image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      title: '传奇角色故事',
-      subtitle: '每个英雄都有属于自己的传说'
+      image: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
     },
     {
       id: 4,
-      image: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      title: '史诗般的冒险',
-      subtitle: '书写属于你的英雄史诗'
+      image: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
     }
   ];
 
