@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './css/Extension.css';
 
 function Extension() {
+  const navigate = useNavigate();
+
   // 画廊数据 - 三列布局
   const galleryData = [
     {
@@ -113,8 +116,8 @@ function Extension() {
   ];
 
   const handleSocialPlatformClick = () => {
-    // 这里可以添加跳转到社交平台界面的逻辑
-    alert('跳转到社交平台界面');
+    // 跳转到社交平台界面
+    navigate('/social');
   };
 
   return (
