@@ -1,0 +1,451 @@
+/* 工会界面主容器 */
+.guild-interface {
+  width: 100%;
+  min-height: calc(100vh - 50px); /* 减去导航栏高度 */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 主内容区域 */
+.main-content-area {
+  flex: 1;
+  display: flex;
+  min-height: calc(100vh - 250px); /* 调整高度适应新的导航栏 */
+  position: relative;
+}
+
+/* 左侧工会信息区 - 30% */
+.left-guild-info {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 0px 0px; /* 移除底部padding */
+  z-index: 10;
+}
+
+/* 工会标题横幅 - 箭头样式 */
+.guild-banner {
+  position: relative;
+  height: 120px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding-left: 40px;
+  overflow: hidden;
+}
+
+.guild-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color, #0047AB), var(--secondary-color, #1E90FF));
+  clip-path: polygon(0 0, calc(100% - 60px) 0, 100% 50%, calc(100% - 60px) 100%, 0 100%);
+  z-index: -1;
+}
+
+/* 添加箭头阴影效果 */
+.guild-banner::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(255, 255, 255, 0.05));
+  clip-path: polygon(0 0, calc(100% - 60px) 0, calc(100% - 2px) 50%, calc(100% - 60px) 100%, 0 100%);
+  z-index: -1;
+}
+
+.guild-title h1 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.guild-title h2 {
+  font-size: 1.8rem;
+  margin: 5px 0 0 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+/* 工会类型标签 */
+.guild-type {
+  font-size: 1.6rem;
+  color: #333;
+  margin: 20px 0 30px 20px;
+  font-weight: 500;
+}
+
+/* 工会描述区域 */
+.guild-description {
+  background-color: rgba(51, 51, 51, 0.9);
+  color: white;
+  padding: 25px;
+  margin-left: 10px;
+  width: 85%;
+  position: relative;
+  border-radius: 2px 2px 0 0; /* 只在顶部保留圆角 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  flex: 1; /* 让描述区域占据剩余空间 */
+  margin-bottom: 0; /* 移除底部边距 */
+}
+
+.guild-description::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  width: 0;
+  height: 0;
+
+  
+}
+
+.guild-description p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* 中央logo展示区 - 30% */
+.center-logo-area {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.logo-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.main-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  transition: filter 0.3s ease;
+}
+
+/* 信息选项卡区域 - 5% */
+.info-tabs-area {
+  width: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 10;
+  padding-left: 10px;
+}
+
+.info-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  padding: 0 0;
+  width: 100%;
+}
+
+.info-tab {
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  color: #666;
+  padding: 1px 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 11px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.info-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #333;
+}
+
+.info-tab.active {
+  color: var(--primary-color, #0047AB);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.tab-text {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  flex: 1;
+}
+
+/* 选项卡右侧指示器 */
+.info-tab::after {
+  content: '';
+  width: 3px;
+  height: 20px;
+  background: #ddd;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.info-tab.active::after {
+  background: var(--primary-color, #0047AB);
+}
+
+/* 右侧背景区 - 30% */
+.right-background-area {
+  width: 35%;
+  position: relative;
+  padding: 20px;
+}
+
+.background-image-container {
+  width: 100%;
+  height: 90%;
+  position: relative;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+/* 底部区域 */
+.bottom-section {
+  height: 200px;
+  background: linear-gradient(45deg, #2c2c2c, #1a1a1a);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  position: relative;
+  border-top: 8px solid var(--primary-color, #0047AB);
+  margin-top: 0; /* 确保与上方内容紧密连接 */
+}
+
+/* 左侧工会选择器 */
+.guild-selector {
+  display: flex;
+  gap: 15px;
+  margin-left: 20px;
+  align-items: center;
+}
+
+.guild-selector-icon {
+  width: 125px;
+  height: 125px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.guild-selector-icon:hover,
+.guild-selector-icon.hovered {
+  transform: scale(1.15) translateY(-5px);
+  border-color: var(--primary-color, #0047AB);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.guild-selector-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 右侧角色展示区 */
+.character-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+
+.character-cards {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+
+
+.character-image {
+  height: 190px;
+  width: 110px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.character-image:hover,
+.character-image.hovered {
+  transform: translateY(-8px);
+}
+.character-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 移除角色信息部分 */
+.character-info {
+  display: none;
+}
+
+/* 分页指示器 */
+.character-pagination {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.page-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.page-dot.active {
+  background: var(--primary-color, #0047AB);
+  transform: scale(1.3);
+}
+
+/* 侧边标签 */
+.side-tag {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  background: var(--primary-color, #0047AB);
+  color: white;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transform-origin: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .main-content-area {
+    flex-direction: column;
+    min-height: calc(100vh - 250px);
+  }
+  
+  .left-guild-info,
+  .center-logo-area,
+  .info-tabs-area,
+  .right-background-area {
+    width: 100%;
+  }
+  
+  .info-tabs {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  
+  .info-tab {
+    min-width: 80px;
+    max-width: 120px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .info-tab::after {
+    width: 20px;
+    height: 3px;
+    margin-left: 0;
+    margin-top: 4px;
+  }
+  
+  .guild-banner {
+    height: 80px;
+  }
+  
+  .guild-title h1 {
+    font-size: 2rem;
+  }
+  
+  .bottom-section {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .guild-selector,
+  .character-display {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .guild-title h1 {
+    font-size: 1.5rem;
+  }
+  
+  .guild-title h2 {
+    font-size: 1.2rem;
+  }
+  
+  .guild-selector {
+    gap: 10px;
+  }
+  
+  .guild-selector-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .character-card {
+    width: 100px;
+    height: 90px;
+  }
+  
+  .info-tab {
+    min-width: 60px;
+    font-size: 9px;
+  }
+  
+  .character-cards {
+    gap: 15px;
+  }
+} 

@@ -1,36 +1,82 @@
 .dropdown {
   display: none;
   position: absolute;
-  top: 72px;
+  top: 50px;
   left: 0;
-  width: 115px;
-  background-color: rgba(0, 0, 0, 0.8);
+  min-width: 180px;
+  background-color: rgba(0, 0, 0, 0.9);
   color: white;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 15px;
+  border-radius: 8px;
   transition: all 0.3s ease;
   opacity: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  pointer-events: none;
+  transform: translateY(-10px);
 }
 
-li:hover .dropdown,
+/* 创建一个不可见的桥接区域，连接导航项和下拉菜单 */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: transparent;
+}
+
+nav li:hover .dropdown {
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
 .dropdown:hover {
   display: flex;
   flex-direction: column;
   opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* 延时隐藏效果 */
+nav li {
+  position: relative;
+}
+
+nav li:not(:hover) .dropdown {
+  transition-delay: 0.3s; /* 延时0.3秒后隐藏 */
 }
 
 .dropdown ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .dropdown li {
-  margin: 5px 0;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown li a {
   text-decoration: none;
   color: white;
   display: block;
+  font-size: 14px;
+  font-weight: 500;
 }

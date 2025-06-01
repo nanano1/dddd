@@ -1,116 +1,193 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './css/Character.css';
+import { getAllCharacters } from '../data/charactersData';
 
 function Character() {
+  const { characterId } = useParams();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(null);
-  const [currentCharacter, setCurrentCharacter] = useState(0);
+  const [currentCharacterIndex, setCurrentCharacterIndex] = useState(0);
   const sliderRef = useRef(null);
 
-  // 角色数据
-  const characters = [
-    {
-      id: 1,
-      name: 'OSAKAKAZE',
-      subName: '狐坂枫',
-      image: '/path/to/character1.png',
-      avatar: '/path/to/avatar1.png',
-      intro: 'OSAKAKAZE是一个勇敢的战士，擅长使用剑。',
-      weapons: '长剑，短刀',
-      items: '护身符，药水',
-    },
-    {
-      id: 2,
-      name: 'Character 2',
-      subName: '角色2',
-      image: '/path/to/character2.png',
-      avatar: '/path/to/avatar2.png',
-      intro: 'Character 2是一个神秘的法师，掌握强大的魔法。',
-      weapons: '法杖，魔法书',
-      items: '魔法石，卷轴',
-    },
-    {
-      id: 3,
-      name: 'Character 3',
-      subName: '角色3',
-      image: '/path/to/character3.png',
-      avatar: '/path/to/avatar3.png',
-      intro: 'Character 3是一个敏捷的弓箭手，擅长远程攻击。',
-      weapons: '弓，箭',
-      items: '箭袋，隐身斗篷',
-    },
-    {
-      id: 4,
-      name: 'Character 4',
-      subName: '角色4',
-      image: '/path/to/character4.png',
-      avatar: '/path/to/avatar4.png',
-      intro: 'Character 4是一个强大的战士，拥有无与伦比的力量。',
-      weapons: '巨剑，斧头',
-      items: '护甲，战斗手套',
-    },
-    {
-      id: 5,
-      name: 'Character 5',
-      subName: '角色5',
-      image: '/path/to/character5.png',
-      avatar: '/path/to/avatar5.png',
-      intro: 'Character 5是一个聪明的策略家，擅长战斗计划。',
-      weapons: '匕首，投掷武器',
-      items: '地图，战术手册',
-    },
-    {
-      id: 6,
-      name: 'Character 6',
-      subName: '角色6',
-      image: '/path/to/character6.png',
-      avatar: '/path/to/avatar6.png',
-      intro: 'Character 6是一个灵活的刺客，擅长潜行和暗杀。',
-      weapons: '双刀，毒药',
-      items: '隐形斗篷，锁匠工具',
-    },
-  ];
+  // 获取所有角色数据
+  const characters = getAllCharacters();
 
-  const handleSlide = (direction) => {
-    if (sliderRef.current) {
-      const scrollAmount = 100; // 每次滑动的距离
-      sliderRef.current.scrollLeft += direction === 'left' ? -scrollAmount : scrollAmount;
+  // 如果URL中有characterId，找到对应的角色索引
+  useEffect(() => {
+    if (characterId) {
+      const characterIndex = characters.findIndex(char => char.id === characterId);
+      if (characterIndex !== -1) {
+        setCurrentCharacterIndex(characterIndex);
+      }
     }
-  };
+  }, [characterId, characters]);
+
+  // 当前显示的角色
+  const currentCharacter = characters[currentCharacterIndex];
 
   const toggleTab = (tab) => {
     setActiveTab(activeTab === tab ? null : tab);
   };
 
-  return (
-    <div className="character-page">
-      <div className="character-content">
-        <div className="character-main">
-          <div className="character-image">
-            <img src={characters[currentCharacter].image} alt={characters[currentCharacter].name} />
+  const handleCharacterSelect = (index) => {
+    const selectedCharacter = characters[index];
+    setCurrentCharacterIndex(index);
+    setActiveTab(null); // 重置选项卡状态
+    
+    // 更新URL路由
+    navigate(`/character/${selectedCharacter.id}`);
+  };
+
+  // 渲染带图片的内容
+  const renderContentWithImage = (content, image) => {
+    if (image) {
+      return (
+        <div className="content-with-image">
+          <div className="content-text">
+            <p>{content}</p>
           </div>
-          <div className="character-name">
-            <h1>{characters[currentCharacter].name}</h1>
-            <h2>{characters[currentCharacter].subName}</h2>
+          <div className="content-image">
+            <img src={image} alt="角色相关图片" />
           </div>
         </div>
+      );
+    }
+    return <p>{content}</p>;
+  };
 
-        <div className="character-tabs">
+  // 渲染2x2关系网格
+  const renderRelationshipGrid = () => {
+    const relationships = currentCharacter.relationships || [];
+    
+    if (relationships.length === 0) {
+      return <p>暂无相关人物关系</p>;
+    }
+    
+    return (
+      <div className="relationship-grid">
+        {relationships.map((relationship, index) => (
+          <div key={index} className="relationship-item">
+            <div className="relationship-avatar">
+              <img src={relationship.avatar} alt={relationship.name} />
+            </div>
+            <div className="relationship-info">
+              <span className="relationship-name">{relationship.name}</span>
+              <span className="relationship-relation">{relationship.relation}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  // 渲染多个物品
+  const renderItems = () => {
+    const items = currentCharacter.items || [];
+    
+    if (items.length === 0) {
+      return <p>暂无个人物品</p>;
+    }
+    
+    return items.map((item, index) => (
+      <div key={index} className="character-items" style={{ marginBottom: index < items.length - 1 ? '20px' : '0' }}>
+        {index === 0 && <h4>个人物品：</h4>}
+        <p>{item.description}</p>
+        {item.image && (
+          <div className="content-image">
+            <img src={item.image} alt={`个人物品${index + 1}`} />
+          </div>
+        )}
+      </div>
+    ));
+  };
+
+  // 渲染多个伙伴
+  const renderCompanions = () => {
+    const companions = currentCharacter.companions || [];
+    
+    if (companions.length === 0) {
+      return null;
+    }
+    
+    return companions.map((companion, index) => (
+      <div key={index} className="character-companions" style={{ marginBottom: index < companions.length - 1 ? '20px' : '0' }}>
+        {index === 0 && <h4>伙伴：</h4>}
+        <p>{companion.description}</p>
+        {companion.image && (
+          <div className="content-image">
+            <img src={companion.image} alt={`伙伴${index + 1}`} />
+          </div>
+        )}
+      </div>
+    ));
+  };
+
+  if (!currentCharacter) {
+    return <div className="character-page"><div className="character-content">角色未找到</div></div>;
+  }
+
+  // 使用当前角色的背景图片
+  const backgroundStyle = {
+    backgroundImage: `url(${currentCharacter.image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
+  };
+
+  // 动态设置选项卡主题色
+  const tabStyle = {
+    '--theme-primary': currentCharacter.themeColor || '#54420E',
+    '--theme-secondary': currentCharacter.secondaryColor || '#876F32'
+  };
+
+  return (
+    <div className="character-page" style={backgroundStyle}>
+      {/* 背景遮罩 */}
+      <div className="character-overlay"></div>
+      
+      <div className="character-content">
+        {/* 右侧选项卡区域 */}
+        <div className="character-tabs" style={tabStyle}>
+          
+          {/* 个人介绍选项卡 */}
           <div className={`tab ${activeTab === 'intro' ? 'active' : ''}`} 
                onClick={() => toggleTab('intro')}>
-            <h3>人物介绍</h3>
+            <h3>个人介绍</h3>
             <div className="dropdown-content">
               {activeTab === 'intro' && (
-                <p>{characters[currentCharacter].intro}</p>
+                <div className="intro-content">
+                  <p>{currentCharacter.intro}</p>
+                  {renderRelationshipGrid()}
+                </div>
               )}
             </div>
           </div>
 
-          <div className={`tab ${activeTab === 'weapons' ? 'active' : ''}`}
+          <div className={`tab ${activeTab === 'weapons' ? 'active' : ''}`} 
                onClick={() => toggleTab('weapons')}>
             <h3>武器/能力</h3>
             <div className="dropdown-content">
               {activeTab === 'weapons' && (
-                <p>{characters[currentCharacter].weapons}</p>
+                <div>
+                  {currentCharacter.weapons && (
+                    <div className="character-weapons">
+                      <h4>装备武器：</h4>
+                      <p>{currentCharacter.weapons}</p>
+                      {currentCharacter.weaponImage && (
+                        <div className="content-image">
+                          <img src={currentCharacter.weaponImage} alt="武器装备" />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  {currentCharacter.skills && (
+                    <div className="character-skills">
+                      <h4>特殊技能：</h4>
+                      <p>{currentCharacter.skills.join('，')}</p>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -120,27 +197,32 @@ function Character() {
             <h3>个人物品/伙伴</h3>
             <div className="dropdown-content">
               {activeTab === 'items' && (
-                <p>{characters[currentCharacter].items}</p>
+                <div>
+                  {renderItems()}
+                  {renderCompanions()}
+                </div>
               )}
             </div>
           </div>
         </div>
 
-        {/* 角色选择滑动列表 */}
+        {/* 角色选择滑动列表 - 底部水平布局 */}
         <div className="character-slider-container">
-          <button className="slider-button left" onClick={() => handleSlide('left')}>&lt;</button>
           <div className="character-slider" ref={sliderRef}>
             {characters.map((char, index) => (
               <div 
                 key={char.id} 
-                className={`character-avatar ${currentCharacter === index ? 'active' : ''}`}
-                onClick={() => setCurrentCharacter(index)}
+                className={`character-avatar ${currentCharacterIndex === index ? 'active' : ''}`}
+                onClick={() => handleCharacterSelect(index)}
               >
                 <img src={char.avatar} alt={char.name} />
+                <div className="character-info">
+                  <span className="character-name">{char.name}</span>
+                  <span className="character-title">{char.title}</span>
+                </div>
               </div>
             ))}
           </div>
-          <button className="slider-button right" onClick={() => handleSlide('right')}>&gt;</button>
         </div>
       </div>
     </div>

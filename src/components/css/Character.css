@@ -1,162 +1,550 @@
+/* 导入字体 */
+@font-face {
+  font-family: 'PangMen';
+  src: url('../../../public/庞门正道标题体3.0.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .character-page {
   width: 100%;
-  min-height: calc(100vh - 72px); /* 减去导航栏的高度 */
-  background-color: #800000; /* 暗红色背景 */
-  padding: 20px;
+  height: 100vh; /* 整个页面包括导航栏占100vh */
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景遮罩层 */
+.character-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.2) 0%, 
+    rgba(0, 0, 0, 0.1) 50%, 
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
 }
 
 .character-content {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.character-main {
-  display: flex;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.character-image {
-  flex: 0 0 400px;
-}
-
-.character-image img {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  height: auto;
+  height: 100vh; /* 调整为100vh */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 40px;
 }
 
-.character-name {
+/* 人物介绍标题 */
+.character-title-header {
+  background: linear-gradient(135deg, #8BC34A 0%, #4CAF50 100%);
+  padding: 15px 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.character-title-header h3 {
+  font-family: 'PangMen', sans-serif;
+  font-size: 24px;
   color: white;
-  margin-left: 40px;
-}
-
-.character-name h1 {
-  font-size: 48px;
-  margin-bottom: 10px;
-}
-
-.character-name h2 {
-  font-size: 36px;
-}
-
-.character-tabs {
-  width: 300px;
-  margin-left: auto;
-}
-
-.tab {
-  background-color: rgba(255, 255, 255, 0.1);
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tab h3 {
-  color: white;
-  padding: 15px 20px;
   margin: 0;
 }
 
+/* 右侧选项卡区域 - 不要紧贴边边 */
+.character-tabs {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  right: 260px; /* 增加边距，不紧贴边边 */
+  max-height: 75vh; /* 限制最大高度，防止溢出 */
+}
+
+.tab {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 主题色选项卡样式 */
 .tab:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, 
+    var(--theme-primary, #faf8f4) 0%, 
+    var(--theme-secondary, #faf8f4) 100%
+  );
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-color: var(--theme-primary, #54420E);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, 
+    var(--theme-primary, #54420E) 0%, 
+    var(--theme-secondary, #876F32) 100%
+  );
+  border-color: var(--theme-primary, #54420E);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.tab h3 {
+  font-family: 'PangMen', sans-serif;
+  color: white;
+  padding: 15px 20px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
 }
 
 .dropdown-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.5);
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  background: linear-gradient(135deg, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
   color: white;
+  backdrop-filter: blur(10px);
 }
 
 .tab.active .dropdown-content {
-  max-height: 500px;
-  padding: 20px;
+  max-height: 300px; /* 限制展开后的最大高度 */
+  padding: 15px;
+  overflow-y: auto; /* 添加垂直滚动 */
+}
+
+/* 自定义下拉内容滚动条 */
+.dropdown-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: var(--theme-primary, #54420E);
+  border-radius: 3px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-secondary, #876F32);
 }
 
 .dropdown-content p {
-  margin: 0;
-  line-height: 1.6;
+  margin: 0 0 1px 0;
+  line-height: 1.8;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.character-slider-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+/* 个人介绍内容样式 */
+.intro-content {
   display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 8px;
-  z-index: 1000;
-}
-
-.character-slider {
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  width: 400px; /* 可以根据需要调整宽度 */
+  flex-direction: column;
   gap: 10px;
-  padding: 0 10px;
 }
 
-.character-avatar {
-  flex: 0 0 80px;
-  height: 80px;
-  border: 2px solid transparent;
-  border-radius: 4px;
-  overflow: hidden;
-  cursor: pointer;
+/* 2x2关系网格样式 */
+.relationship-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 15px;
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+.relationship-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
-.character-avatar.active {
-  border-color: #fff;
+.relationship-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
 }
 
-.character-avatar img {
+.relationship-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--theme-primary, #54420E);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.relationship-avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.relationship-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.slider-button {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+.relationship-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+
+.relationship-name {
+  font-family: 'PangMen', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
   color: white;
-  padding: 10px 15px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.relationship-relation {
+  font-size: 10px;
+  color: var(--theme-primary, #54420E);
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* 2x2头像网格样式 - 保留但不再使用 */
+.avatar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 15px;
+  margin-top: 0px;
+  max-width: 200px;
+}
+
+.avatar-grid-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--theme-primary, #54420E);
+  transition: all 0.3s ease;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 
-.slider-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+.avatar-grid-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.slider-button.left {
-  margin-right: 10px;
+.avatar-grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.slider-button.right {
-  margin-left: 10px;
+/* 武器和技能样式 */
+.character-weapons,
+.character-skills,
+.character-companions,
+.character-items {
+  margin-bottom: 20px;
 }
 
-/* 添加滚动条样式 */
+.character-weapons h4,
+.character-skills h4,
+.character-companions h4,
+.character-items h4 {
+  font-family: 'PangMen', sans-serif;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.character-skills {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.character-skills ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: none;
+}
+
+.character-skills li {
+  margin-bottom: 8px;
+  color: #ffffff;
+  position: relative;
+  padding-left: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.character-skills li::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--theme-primary, #54420E);
+  font-size: 12px;
+}
+
+/* 角色选择滑动列表样式 */
+.character-slider-container {
+  position: absolute;
+  bottom: 100px;
+  right:260px;
+
+  width: 70%;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+
+  padding: 5px;
+  backdrop-filter: blur(15px);
+  border-top: 3px solid rgba(255, 255, 255);
+}
+
+
+.character-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-primary, #ffffff) rgba(255, 255, 255, 0.1);
+}
+
+/* 自定义角色选择栏滚动条 */
 .character-slider::-webkit-scrollbar {
-  display: none; /* 隐藏滚动条 */
+  
+  height: 8px;
 }
 
-/* 添加动画效果 */
+.character-slider::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 0 10px;
+}
+
+.character-slider::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.character-slider::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255);
+  transform: scaleY(1.2);
+}
+
+/* 角色头像样式 - 移除边框和装饰 */
+.character-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+  opacity: 0.7;
+}
+
+.character-avatar.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
 .character-avatar:hover {
+  opacity: 1;
   transform: scale(1.05);
 }
 
 .character-avatar img {
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.character-info {
+  text-align: center;
+  color: white;
+}
+
+.character-name {
+  display: block;
+  font-family: 'PangMen', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.character-title {
+  display: block;
+  font-size: 12px;
+  opacity: 0.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.content-image {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.content-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
 
-.character-avatar:hover img {
-  transform: scale(1.1);
+.content-image img:hover {
+  transform: scale(1.05);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .character-content {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .character-tabs {
+    width: 90%;
+    max-width: 400px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 40%;
+    max-height: 60vh; /* 移动端进一步限制高度 */
+  }
+
+  .tab.active .dropdown-content {
+    max-height: 250px; /* 移动端较小的最大高度 */
+  }
+
+  .character-slider-container {
+    bottom: 20px;
+    width: 90%;
+    padding: 15px;
+  }
+
+  .character-slider {
+    gap: 15px;
+  }
+
+  .character-avatar {
+    min-width: 80px;
+  }
+
+  .character-avatar img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .avatar-grid {
+    max-width: 160px;
+  }
+
+  .avatar-grid-item {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .character-tabs {
+    width: 95%;
+    max-height: 50vh; /* 小屏幕进一步限制高度 */
+  }
+
+  .tab h3 {
+    font-size: 16px;
+    padding: 15px 20px;
+  }
+
+  .tab.active .dropdown-content {
+    max-height: 200px; /* 小屏幕最小的最大高度 */
+  }
+
+  .character-slider-container {
+    bottom: 10px;
+    padding: 10px;
+  }
+
+  .character-slider {
+    gap: 10px;
+  }
+
+  .character-avatar {
+    min-width: 70px;
+  }
+}
+
+/* 动画效果 */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.character-tabs {
+  animation: slideInFromRight 0.6s ease-out;
+}
+
+.tab.active .dropdown-content {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
