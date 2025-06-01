@@ -26,12 +26,7 @@ function Dropdown({ menuType }) {
           { to: '/story?chapter=2', label: '第二章' },
           { to: '/story?chapter=3', label: '第三章' }
         ];
-      case 'extension':
-        return [
-          { to: '/extension?type=music', label: '音乐' },
-          { to: '/extension?type=art', label: '美术设定' },
-          { to: '/extension?type=lore', label: '背景故事' }
-        ];
+      
       default:
         return [];
     }

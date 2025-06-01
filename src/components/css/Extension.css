@@ -1,0 +1,317 @@
+.extension-container {
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+/* 通用部分标题样式 */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: black;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  color: black;
+}
+
+/* 画廊部分样式 */
+.gallery-section {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gallery-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem 1.5rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-category {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+}
+
+/* 社交平台部分样式 */
+.social-section {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.social-platform-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.social-platform-card {
+  position: relative;
+  width: 100%;
+  max-width: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.social-platform-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+.social-platform-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.social-platform-card:hover .social-platform-image {
+  transform: scale(1.05);
+}
+
+.social-platform-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(228, 231, 245, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-platform-card:hover .social-platform-overlay {
+  opacity: 1;
+}
+
+.social-platform-overlay h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.social-platform-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.click-hint {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.click-hint:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.click-hint span {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* 实物周边部分样式 */
+.merchandise-section {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 4rem 0rem;
+}
+
+.merchandise-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.merchandise-item {
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.merchandise-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.merchandise-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.merchandise-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.merchandise-item:hover .merchandise-image img {
+  transform: scale(1.1);
+}
+
+.merchandise-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 2rem 1.5rem 1.5rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.merchandise-item:hover .merchandise-overlay {
+  transform: translateY(0);
+}
+
+.merchandise-overlay h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.merchandise-category {
+  background: rgba(255, 182, 193, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 182, 193, 0.5);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .merchandise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .social-platform-card {
+    height: 300px;
+  }
+  
+  .social-platform-overlay h3 {
+    font-size: 2rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .extension-container {
+    padding: 1rem 0;
+  }
+  
+  .gallery-section,
+  .social-section,
+  .merchandise-section {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-image,
+  .merchandise-image {
+    height: 180px;
+  }
+  
+  .social-platform-card {
+    height: 250px;
+  }
+  
+  .social-platform-overlay h3 {
+    font-size: 1.5rem;
+  }
+  
+  .social-platform-overlay p {
+    font-size: 1rem;
+  }
+} 
