@@ -1,17 +1,17 @@
-
-
 /* 第一屏：轮播图区域 */
 .carousel-container {
   height: calc(100vh - 50px); /* 减去导航栏高度 */
   position: relative;
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+  height:100%;
 }
 
 .carousel-slide {
@@ -19,10 +19,11 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 80%;
-  background-size: cover;
+  height: 31.25vw;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +77,7 @@
 /* 轮播指示点 */
 .carousel-dots {
   position: absolute;
-  bottom: 25%;
+  bottom: 35vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -121,7 +122,7 @@
 /* 标语区域 */
 .banner-text {
   position: absolute;
-  height: 20%;
+  height: 15%;
   bottom: 0;
   left: 0;
   right: 0;
@@ -152,7 +153,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 95%;
   margin: 0 auto;
   padding: 60px 40px;
   gap: 60px;
@@ -171,7 +172,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -230,12 +230,14 @@
 /* 第三屏：视频区域 */
 .video-section {
   height: 100vh;
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  background: url('/public/assets/images/ui/视频背景@2x.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 40px;
 }
 
 .video-container {
@@ -248,7 +250,16 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
+.video-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* 灰色透明蒙版 */
+  z-index: 1; /* 确保蒙版在背景上方 */
+}
 .video-container h2 {
   color: white;
   font-size: 3rem;
@@ -260,7 +271,7 @@
 .video-placeholder {
   width: 100%;
   height: 500px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(138, 138, 138, 0.6);
   border-radius: 15px;
   display: flex;
   align-items: center;
@@ -308,6 +319,11 @@
 @media (max-width: 768px) {
   .carousel-container {
     height: calc(100vh - 50px);
+  }
+  
+  .carousel-wrapper {
+    height: 50vw; /* 移动端也保持2:1比例 */
+    max-height: calc(100vh - 150px); /* 移动端留更多空间给UI元素 */
   }
   
   .slide-content h1 {

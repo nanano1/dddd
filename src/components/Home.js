@@ -50,29 +50,23 @@ function Home() {
               key={slide.id}
               className={`carousel-slide ${index === currentSlide ? 'active' : ''}`}
               style={{
-                background: slide.image.startsWith('/') ? `url('${slide.image}')` : slide.image,
+                backgroundImage: slide.image.startsWith('/') ? `url('${slide.image}')` : slide.image,
                 transform: `translateX(${(index - currentSlide) * 100}%)`
               }}
             >
-              <div className="slide-content">
-                <h1>{slide.title}</h1>
-                <p>{slide.subtitle}</p>
-              </div>
             </div>
           ))}
+          {/* 轮播指示点 */}
+          <div className="carousel-dots">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                className={`dot ${index === currentSlide ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+              />
+            ))}
+          </div>
         </div>
-        
-        {/* 轮播指示点 */}
-        <div className="carousel-dots">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`dot ${index === currentSlide ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-            />
-          ))}
-        </div>
-
         {/* 标语区域 */}
         <div className="banner-text">
           <h1>无论身在何处，我们终将相遇</h1>
@@ -147,9 +141,7 @@ function Home() {
       {/* 第三屏：视频区域 */}
       <div className="video-section">
         <div className="video-container">
-          <h2>精彩视频展示</h2>
           <div className="video-placeholder">
-            <p>点击此处添加视频内容</p>
           </div>
         </div>
       </div>
