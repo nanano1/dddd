@@ -49,24 +49,24 @@ export const adventurerGuildConfig = {
       onClick: () => console.log('点击了角色1')
     },
     {
-      image: '/assets/images/characters/MUYAN@2x.png',
-      name: 'MUYAN',
-      title: '探索者',
-      characterId: 'muyan',
+      image: '/assets/images/characters/lizi.png',
+      name: '狸子',
+      title: '战士',
+      characterId: 'LIZI',
       onClick: () => console.log('点击了角色2')
     },
     {
-      image: '/assets/images/characters/MUYING@2x.png',
-      name: 'MUYING',
+      image: '/assets/images/characters/狐坂枫.png',
+      name: '狐坂枫',
       title: '战士',
-      characterId: 'muying',
+      characterId: 'KOSAKAKAZE',
       onClick: () => console.log('点击了角色3')
     },
     {
-      image: '/assets/images/characters/UNKNOWN@2x.png',
-      name: 'ALEX',
-      title: '法师',
-      characterId: 'alex',
+      image: '/assets/images/characters/FROSTINE.png',
+      name: '茯倾',
+      title: '调香师',
+      characterId: 'FROSTINE',
       onClick: () => console.log('点击了角色4')
     }
   ],
@@ -115,10 +115,18 @@ export const crystalSchoolConfig = {
   ],
   
   characterAvatars: [
-    { image: '/assets/images/characters/aurora-avatar.png', name: '学生代表1', title: '优等生', characterId: 'student1' },
-    { image: '/assets/images/characters/blake-avatar.png', name: '学生代表2', title: '班长', characterId: 'student2' },
-    { image: '/assets/images/characters/student3-avatar.png', name: '学生代表3', title: '学霸' },
-    { image: '/assets/images/characters/student4-avatar.png', name: '学生代表4', title: '研究员' }
+    {
+      image: '/assets/images/characters/小四.png',
+      name: '小四',
+      title: '学者',
+      characterId: 'xiaosi'
+    },
+    {
+      image: '/assets/images/characters/NIEHTZU.png',
+      name: '聂子',
+      title: '校医',
+      characterId: 'niezi'
+    }
   ],
   
   primaryColor: '#0047AB', // 蓝色主题
@@ -169,8 +177,18 @@ export const cocConfig = {
   ],
   
   characterAvatars: [
-    { image: '/assets/images/characters/aurora-avatar.png', name: '首席审判官', title: '超决者' },
-    { image: '/assets/images/worldview/judge2.png', name: '执法者', title: '审判员' }
+    {
+      image: '/assets/images/characters/FROSTINE.png',
+      name: '茯倾',
+      title: '调香师',
+      characterId: 'FROSTINE'
+    },
+    {
+      image: '/assets/images/characters/豆小泥.png',
+      name: '星小猫',
+      title: '人偶师',
+      characterId: 'xingxiaomao'
+    }
   ],
   
   primaryColor: '#8B0000', // 深红色主题
@@ -213,8 +231,18 @@ export const judgmentCourtConfig = {
   ],
   
   characterAvatars: [
-    { image: '/assets/images/worldview/judge1.png', name: '首席审判官', title: '超决者' },
-    { image: '/assets/images/worldview/judge2.png', name: '执法者', title: '审判员' }
+    {
+      image: '/assets/images/characters/N.png',
+      name: 'N',
+      title: '审判庭利刃',
+      characterId: 'n'
+    },
+    {
+      image: '/assets/images/characters/ming.png',
+      name: '铭',
+      title: '裁决者',
+      characterId: 'ming'
+    }
   ],
   
   primaryColor: '#8B0000', // 深红色主题
@@ -257,8 +285,18 @@ export const lightGuardConfig = {
   ],
   
   characterAvatars: [
-    { image: '/assets/images/worldview/priest1.png', name: '光明使者', title: '牧师' },
-    { image: '/assets/images/worldview/priest2.png', name: '智慧守护者', title: '长老' }
+    {
+      image: '/assets/images/characters/lizi.png',
+      name: '狸子',
+      title: '赏金猎人',
+      characterId: 'LIZI'
+    },
+    {
+      image: '/assets/images/characters/麻纪.png',
+      name: '麻纪',
+      title: '赏金猎人',
+      characterId: 'maji'
+    }
   ],
   
   primaryColor: '#FFD700', // 金色主题
@@ -301,8 +339,12 @@ export const darkRavenConfig = {
   ],
   
   characterAvatars: [
-    { image: '/assets/images/worldview/spy1.png', name: '影子特工', title: '间谍' },
-    { image: '/assets/images/worldview/spy2.png', name: '情报分析师', title: '分析员' }
+    {
+      image: '/assets/images/characters/轮.png',
+      name: '轮',
+      title: '混沌代行者',
+      characterId: 'lun'
+    }
   ],
   
   primaryColor: '#2F4F4F', // 暗灰色主题
@@ -317,41 +359,6 @@ export const darkRavenConfig = {
   ]
 };
 
-// 异能处配置
-export const psychicDeptConfig = {
-  guildName: '异能处',
-  guildSubtitle: 'P.D.',
-  guildType: '异能势力',
-  description: '研究、管控和利用异常能力的专门机构，致力于平衡超自然力量与人类社会和谐共存。',
-  
-  centerLogo: '/assets/images/worldview/A.GLOGO.png',
-  backgroundImage: '/assets/images/worldview/psychic-bg.png',
-  
-  bottomIcons: [
-    { image: '/assets/images/worldview/A.GLOGO.png', title: '异能徽章' },
-    { image: '/assets/images/worldview/ADLOGO.png', title: '能力分级' },
-    { image: '/assets/images/worldview/COCLOGO.png', title: '研究资料' },
-    { image: '/assets/images/worldview/CSbackground.png', title: '实验设施' },
-    { image: '/assets/images/worldview/BHLOGO.png', title: '管制法规' }
-  ],
-  
-  characterAvatars: [
-    { image: '/assets/images/worldview/psychic1.png', name: '异能研究员', title: '研究员' },
-    { image: '/assets/images/worldview/psychic2.png', name: '能力者', title: '超能者' }
-  ],
-  
-  primaryColor: '#4B0082', // 靛蓝色主题
-  secondaryColor: '#9370DB',
-  
-  alternativeLogos: [
-    '/assets/images/worldview/A.GLOGO.png',
-    '/assets/images/worldview/ADLOGO.png',
-    '/assets/images/worldview/COCLOGO.png',
-    '/assets/images/worldview/CSbackground.png',
-    '/assets/images/worldview/BHLOGO.png'
-  ]
-};
-
 // 所有工会配置的集合
 export const allGuildConfigs = {
   adventurerGuild: adventurerGuildConfig,
@@ -359,8 +366,7 @@ export const allGuildConfigs = {
   cocGuild: cocConfig,
   judgmentCourt: judgmentCourtConfig,
   lightGuard: lightGuardConfig,
-  darkRaven: darkRavenConfig,
-  psychicDept: psychicDeptConfig
+  darkRaven: darkRavenConfig
 };
 
 // 默认配置模板 - 用于创建新工会

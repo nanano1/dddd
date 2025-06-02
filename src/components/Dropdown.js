@@ -11,15 +11,17 @@ function Dropdown({ menuType }) {
           { to: '/about?guild=adventurerGuild', label: '冒险者工会' },
           { to: '/about?guild=crystalSchool', label: '克里斯万象学院' },
           { to: '/about?guild=judgmentCourt', label: '审判庭' },
-          { to: '/about?guild=lightGuard', label: '普照会' },
-          { to: '/about?guild=darkRaven', label: '暗鸦堂' }
+          { to: '/about?guild=lightGuard', label: '普照会' }
         ];
       case 'characters':
-        const allCharacters = getAllCharacters();
-        return allCharacters.map(character => ({
-          to: `/character/${character.id}`,
-          label: `${character.name} (${character.subName})`
-        }));
+        return [
+          { to: '/characters', label: 'la liberté' },
+          { to: '/coming-soon', label: 'DDDD' },
+          { to: '/coming-soon', label: 'Dazzling Divas&Double D Rhythm' },
+          { to: '/coming-soon', label: '霍格沃茨' },
+          { to: '/coming-soon', label: 'pokemon' },
+          { to: '/coming-soon', label: '逐暗' }
+        ];
       case 'story':
         return [
           { to: '/story?chapter=1', label: '第一章' },

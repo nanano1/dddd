@@ -40,7 +40,7 @@ function Extension() {
     {
       id: 6,
       title: 'Q版角色',
-      image: '/assets/images/extension/画廊-Q版.png',
+      image: '/assets/images/extension/画廊-q版.png',
       category: 'effect'
     },
     {

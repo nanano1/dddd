@@ -157,7 +157,30 @@ function Character() {
             <div className="dropdown-content">
               {activeTab === 'intro' && (
                 <div className="intro-content">
-                  <p>{currentCharacter.intro}</p>
+                  <p>
+                    {(() => {
+                      const parts = currentCharacter.intro.split('\n\n');
+                      const firstPart = parts[0].split('\n');
+                      const secondPart = parts[1] ? parts[1].split('\n') : []; // 处理可能没有第二部分的情况
+
+                      return (
+                        <>
+                          {firstPart.map((line, index) => (
+                            <React.Fragment key={index}>
+                              {line}
+                              {index < firstPart.length && <br />}
+                            </React.Fragment>
+                          ))}
+                          {secondPart.map((line, index) => (
+                            <React.Fragment key={index + firstPart.length}>
+                              <strong>{line}</strong> {/* 将第二部分的内容加粗 */}
+                              {index < secondPart.length - 1 && <br />}
+                            </React.Fragment>
+                          ))}
+                        </>
+                      );
+                    })()}
+                  </p>
                   {renderRelationshipGrid()}
                 </div>
               )}
