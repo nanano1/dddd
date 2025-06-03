@@ -7,6 +7,8 @@ import GuildDemo from './components/GuildDemo';
 import Extension from './components/Extension';
 import SocialPlatform from './components/SocialPlatform';
 import ComingSoon from './components/ComingSoon';
+import Worldview from './components/Worldview';
+import AudioPlayer from './components/AudioPlayer';
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<GuildDemo />} />
+        <Route path="/worldview" element={<Worldview />} />
         <Route path="/characters" element={<Character />} />
         <Route path="/characters/:characterId" element={<Character />} />
         <Route path="/story" element={<div>剧情</div>} />
@@ -22,6 +25,7 @@ function App() {
         <Route path="/social" element={<SocialPlatform />} />
         <Route path="/coming-soon" element={<ComingSoon />} />
       </Routes>
+      <AudioPlayer />
     </Router>
   );
 }

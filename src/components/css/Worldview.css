@@ -1,0 +1,399 @@
+.worldview-container {
+  padding: 80px 20px 20px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #333;
+  border-bottom: 10px solid #5E421D;
+  padding-bottom: 10px;
+}
+
+.subtitle {
+  text-align: left;
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* 世界地图部分 */
+.world-map-section {
+  padding: 40px;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.world-map {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 能力组织部分 */
+.organizations-section {
+  padding: 40px;
+
+}
+
+.organizations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.organization-card {
+  position: relative;
+  text-align: center;
+  border: 7px solid #5E421D;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.organization-card:hover {
+  transform: translateY(-5px);
+}
+
+.organization-card img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.organization-card h3 {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.organization-card p {
+  color: black;
+  line-height: 1;
+  font-size: 0.9rem;
+}
+
+/* 通行货币部分 - 新布局 */
+.currency-section {
+  padding: 40px;
+}
+
+.currency-content-new {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.currency-row {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* 第一行样式 */
+.currency-row .currency-square {
+  flex: 1;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.currency-square.moonstone {
+  background:url('/public/assets/images/worldview/moonstone.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: black;
+}
+
+.currency-square.gold {
+  background:url('/public/assets/images/worldview/lion.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.currency-text-area-new {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+}
+
+.currency-text-area-new h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.currency-text-area-new p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* 第二行样式 */
+.currency-display-box {
+  flex: 3;
+  width: 100%;
+  background: #f0f8ff;
+  padding: 20px;
+  border: 3px solid #5E421D;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.currency-item-horizontal {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.currency-item-horizontal img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.currency-info {
+  flex: 1;
+}
+
+.currency-info h4 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.currency-info p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 2px 0;
+}
+
+/* 种族部分 - 不同背景色 */
+.races-section {
+  padding: 40px;
+}
+
+.races-slider-container {
+  overflow-x: auto;
+  padding: 20px 0;
+}
+
+.races-slider {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 20px;
+  min-width: max-content;
+}
+
+.race-card-new {
+  min-width: 280px;
+  max-width: 280px;
+  border: 3px solid #5E421D;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.race-card-new:hover {
+  transform: translateY(-5px);
+}
+
+/* 种族背景色 */
+.race-card-new.human-bg {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+}
+
+.race-card-new.beast-bg {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+}
+
+.race-card-new.dwarf-bg {
+  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+  color: white;
+}
+
+.race-card-new.elf-bg {
+  background: linear-gradient(135deg, #55efc4 0%, #00b894 100%);
+}
+
+.race-card-new.dragon-bg {
+  background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+  color: white;
+}
+
+.race-card-new.angel-bg {
+  background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+}
+
+.race-card-new img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.race-card-new h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.race-card-new p {
+  line-height: 1.6;
+  font-size: 0.9rem;
+  text-align: left;
+  opacity: 0.9;
+}
+
+/* 滑动条样式 */
+.races-slider-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.races-slider-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.races-slider-container::-webkit-scrollbar-thumb {
+  background: #5E421D;
+  border-radius: 10px;
+}
+
+.races-slider-container::-webkit-scrollbar-thumb:hover {
+  background: #4a331a;
+}
+
+/* 势力部分 - 分组布局 */
+.factions-section {
+  padding: 40px;
+}
+
+.faction-group {
+  margin-bottom: 40px;
+}
+
+.faction-group-title {
+  font-size: 1.8rem;
+  color: #5E421D;
+  margin-bottom: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #5E421D;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.factions-container {
+  display: flex;
+  gap: 10px;
+  height: 200px;
+  align-items: stretch;
+}
+
+.faction-card {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 3px solid #5E421D;
+  cursor: pointer;
+  flex: 1;
+}
+
+.faction-card.active {
+  flex: 3;
+}
+
+/* 鼠标悬停时的特殊处理 */
+.factions-container:hover .faction-card:not(:hover) {
+  flex: 1;
+}
+
+.factions-container:hover .faction-card:hover {
+  flex: 2;
+}
+
+.faction-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+/* 移除旧的样式 */
+.academy-section,
+.currency-content,
+.races-grid {
+  display: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .worldview-container {
+    padding: 60px 15px 15px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .currency-row {
+    flex-direction: column;
+  }
+  
+  .currency-square, .currency-text-area-new, .currency-display-box {
+    flex: 1;
+  }
+  
+  .currency-item-horizontal {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .organizations-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .race-card-new {
+    min-width: 250px;
+    max-width: 250px;
+  }
+  
+  .factions-container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .faction-card {
+    flex: none !important;
+    height: 150px;
+  }
+  
+  .faction-card.active {
+    height: 200px;
+  }
+} 

@@ -11,7 +11,7 @@ function Navbar() {
       </Link>
       <ul>
         <li>
-          <Link to="/about">世界观介绍</Link>
+          <Link to="/worldview">世界观介绍</Link>
           <Dropdown menuType="worldview" />
         </li>
         <li>

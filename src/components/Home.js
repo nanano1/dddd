@@ -8,7 +8,7 @@ function Home() {
   const slides = [
     {
       id: 1,
-      image: '/assets/images/ui/首页轮播图1@2x.png',
+      image: '/assets/images/ui/首页轮播图1.png',
     },
     {
       id: 2,

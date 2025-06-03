@@ -131,34 +131,21 @@ const charactersData = {
     subName: '露米娜',
     guild: 'adventurerGuild',
     guildName: '冒险者工会',
-    image: '/assets/images/characters/lumina-full.png',
-    avatar: '/assets/images/characters/lumina-avatar.png',
+    image: '/assets/images/characters/lumibabg.png',
+    avatar: '/assets/images/characters/LUMINA@2x.png',
     title: '冒险者',
-    intro: 'LUMINA是冒险者工会的核心成员，拥有强大的战斗技能和丰富的冒险经验。她总是第一个站出来保护同伴，是团队中不可或缺的领导者。',
-    introImage: '/assets/images/characters/lumina-intro.jpg',
-    weapons: '符文剑，护盾，投掷短刀',
-    weaponImage: '/assets/images/weapons/lumina-weapons.jpg',
+    intro: '狐人族 女 200岁\n所属势力：冒险家协会\n一位酷爱唱歌的狐族女孩，以增长见闻为目的正在利普赫顿四处游历。人美声甜的她常常用歌声鼓励人们，久而久之成为了大家心目中的偶像。除了歌声，露米娜最擅长的仍是狐族特有的幻术，强大的实力与阳光的性格也使她在招募中颇为抢手。\n曾在一次外出时遭遇魔物，露米娜没能击退击退致使同伴受伤，为此她非常自责，选择闭关提升自己。\n\n\n不要小瞧我哦！\n搞定！',
+    weapons: '一柄匕首，使用组织内部特殊材料制成，被用特殊魔法强化过，其刃身坚固无比，除了物理属性，这把匕首还能够破坏一般性的魔法屏障，也能够抵挡部分有实体的魔法攻击。',
+    weaponImage: '/assets/images/characters/luminaWeapon.png',
     items: [
       {
-        description: '冒险者徽章，团队的象征，代表着荣誉与责任。',
-        image: '/assets/images/items/lumina-items.jpg'
-      },
-      {
-        description: '高级治疗药水，在危机时刻能够快速恢复体力和伤势。',
-        image: '/assets/images/items/lumina-items2.jpg'
+        description: '一个带有签名的话筒，是为露米娜定制的专属话筒，只有在演出现场才能见到。',
+        image: '/assets/images/characters/luminaItem.png'
       }
     ],
-    skills: ['剑术精通', '领导力', '战术规划', '魔法抗性'],
-    background: '出生于边境小镇，从小立志成为伟大的冒险者。在一次怪物袭击中失去家人，加入冒险者工会寻求复仇与正义。',
-    backgroundImage: '/assets/images/backgrounds/lumina-story.jpg',
-    themeColor: '#54420E', // 棕色主题
-    secondaryColor: '#876F32',
-    companions: [
-      {
-        description: '忠诚的战马，陪伴LUMINA征战各地的可靠伙伴。',
-        image: '/assets/images/companions/lumina-horse.jpg'
-      }
-    ],
+    skills: ['瞬身：在一定距离内可以瞬间移动，最多可以带一名同伴一起。对魔力消耗消耗较大，不能连续使用。\n幻象：召唤出白狐幻象一同作战，白狐的强度取决于露米娜当时的状态。\n易容：使用幻术易容成其他人的模样，以此执行潜入型任务。'],
+    themeColor: '#6EB1CE', // 棕色主题
+    secondaryColor: '#85DEED',
     relationships: [
       { avatar: '/assets/images/characters/XIAOSI.png', name: '小四', relation: '师妹' },
       { avatar: '/assets/images/characters/muyant-avatar.png', name: '慕焰', relation: '同伴' },

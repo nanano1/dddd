@@ -206,7 +206,7 @@ function Character() {
                   )}
                   {currentCharacter.skills && (
                     <div className="character-skills">
-                      <h4>特殊技能：</h4>
+                      <h4>能力：</h4>
                       <p>{currentCharacter.skills.join('，')}</p>
                     </div>
                   )}
