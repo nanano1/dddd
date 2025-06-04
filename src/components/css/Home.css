@@ -220,8 +220,8 @@
 /* 第三屏：视频区域 */
 .video-section {
   height: 100vh;
-  background: url('/public/assets/images/ui/视频背景@2x.png');
-  background-size: contain;
+  background: url('/public/assets/images/ui/首页轮播图1.png');
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;

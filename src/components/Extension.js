@@ -1,6 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './css/Extension.css';
+
+// 懒加载图片组件
+const LazyImage = ({ src, alt, className, onClick }) => {
+  const [imageSrc, setImageSrc] = useState('');
+  const [imageRef, setImageRef] = useState();
+
+  useEffect(() => {
+    let observer;
+    
+    if (imageRef && imageSrc !== src) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setImageSrc(src);
+              observer.unobserve(imageRef);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(imageRef);
+    }
+    
+    return () => {
+      if (observer && observer.unobserve) {
+        observer.unobserve(imageRef);
+      }
+    };
+  }, [imageRef, imageSrc, src]);
+
+  return (
+    <div 
+      className="lazy-image-container"
+      ref={setImageRef}
+      style={{ 
+        minHeight: '200px',
+        background: imageSrc ? 'none' : '#f0f0f0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+    >
+      {imageSrc ? (
+        <img 
+          src={imageSrc} 
+          alt={alt} 
+          className={className}
+          onClick={onClick}
+          loading="lazy"
+        />
+      ) : (
+        <div style={{ color: '#999', fontSize: '14px' }}>加载中...</div>
+      )}
+    </div>
+  );
+};
 
 function Extension() {
   const navigate = useNavigate();
@@ -132,8 +189,7 @@ function Extension() {
           {galleryData.map((item) => (
             <div key={item.id} className="gallery-item">
               <div className="gallery-image">
-                <img src={item.image} alt={item.title} />
-                
+                <LazyImage src={item.image} alt={item.title} />
               </div>
             </div>
           ))}
@@ -148,12 +204,11 @@ function Extension() {
         </div>
         <div className="social-platform-container">
           <div className="social-platform-card" onClick={handleSocialPlatformClick}>
-            <img 
+            <LazyImage 
               src="/assets/images/extension/伪社交.png" 
               alt="社交平台"
               className="social-platform-image"
             />
-            
           </div>
         </div>
       </section>
@@ -168,7 +223,7 @@ function Extension() {
           {merchandiseData.map((item) => (
             <div key={item.id} className="merchandise-item">
               <div className="merchandise-image">
-                <img src={item.image} alt={item.title} />
+                <LazyImage src={item.image} alt={item.title} />
                 <div className="merchandise-overlay">
                   <h3>{item.title}</h3>
                   <span className="merchandise-category">{item.category}</span>

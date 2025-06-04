@@ -12,7 +12,7 @@ function Home() {
     },
     {
       id: 2,
-      image: '/assets/images/ui/首页条形图1@2x.png',
+      image: '/assets/images/ui/首页条形图1.png',
     },
     {
       id: 3,
@@ -78,7 +78,7 @@ function Home() {
         {/* 第一行：图左文右 */}
         <div className="content-row">
           <div className="image-section">
-            <img src="/assets/images/ui/首页条形图1@2x.png" alt="Content 1" />
+            <img src="/assets/images/ui/首页条形图1.png" alt="Content 1" />
           </div>
           <div className="text-section">
             <h2>la liberté</h2>
@@ -89,7 +89,7 @@ function Home() {
         {/* 第二行：图右文左 */}
         <div className="content-row reverse">
           <div className="image-section">
-            <img src="/assets/images/ui/首页条形图2@2x.png" alt="Content 2" />
+            <img src="/assets/images/ui/首页条形图2.png" alt="Content 2" />
           </div>
           <div className="text-section">
             <h2>DDDD</h2>
@@ -100,7 +100,7 @@ function Home() {
         {/* 第三行：图左文右 */}
         <div className="content-row">
           <div className="image-section">
-            <img src="/assets/images/ui/首页条形图3@2x.png" alt="Content 3" />
+            <img src="/assets/images/ui/首页条形图3.png" alt="Content 3" />
           </div>
           <div className="text-section">
             <h2>Dazzling Divas&Double D Rhythm</h2>
@@ -111,7 +111,7 @@ function Home() {
         {/* 第四行：图右文左 */}
         <div className="content-row reverse">
           <div className="image-section">
-            <img src="/assets/images/ui/首页条形图4@2x.png" alt="Content 4" />
+            <img src="/assets/images/ui/首页条形图4.png" alt="Content 4" />
           </div>
           <div className="text-section">
             <h2>霍格沃茨</h2>
@@ -120,7 +120,7 @@ function Home() {
         </div>
         <div className="content-row">
           <div className="image-section">
-            <img src="/assets/images/ui/首页条形图5@2x.png" alt="Content 4" />
+            <img src="/assets/images/ui/首页条形图5.png" alt="Content 4" />
           </div>
           <div className="text-section">
             <h2>pokemon</h2>
@@ -129,7 +129,7 @@ function Home() {
         </div>
         <div className="content-row reverse">
           <div className="image-section">
-            <img src="/assets/images/ui/首页条形图36@2x.png" alt="Content 4" />
+            <img src="/assets/images/ui/首页条形图6.png" alt="Content 4" />
           </div>
           <div className="text-section">
             <h2>逐暗（待建设）</h2>

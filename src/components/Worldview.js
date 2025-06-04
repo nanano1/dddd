@@ -20,7 +20,7 @@ const Worldview = () => {
         <h1 className="section-title">la liberté</h1>
         <div className="subtitle">世界地图&植被带&气候带介绍</div>
         <div className="map-container">
-          <img src="/assets/images/worldview/地图@2x.png" alt="世界地图" className="world-map" />
+          <img src="/assets/images/worldview/地图.png" alt="世界地图" className="world-map" />
         </div>
       </section>
 
