@@ -1,81 +1,129 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import { FaPlay, FaPause } from 'react-icons/fa';
 import bgm from '../assets/60.mp3';
 import './AudioPlayer.css';
 
 const AudioPlayer = () => {
-    const [isMuted, setIsMuted] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [hasStarted, setHasStarted] = useState(false); // 添加状态跟踪是否已经开始播放
     const audioRef = useRef(null);
 
     useEffect(() => {
-        if (audioRef.current) {
-            audioRef.current.volume = 0.3; // 设置默认音量为30%
-            audioRef.current.loop = true;  // 设置循环播放
-            
-            // 添加调试事件监听器
-            const audio = audioRef.current;
-            
-            audio.addEventListener('loadstart', () => {
-                console.log('🎵 音频开始加载...');
-            });
-            
-            audio.addEventListener('canplay', () => {
-                console.log('✅ 音频可以播放');
-            });
-            
-            audio.addEventListener('play', () => {
-                console.log('▶️ 音频开始播放');
-            });
-            
-            audio.addEventListener('pause', () => {
-                console.log('⏸️ 音频暂停');
-            });
-            
-            audio.addEventListener('error', (e) => {
-                console.error('❌ 音频加载错误:', e);
-                console.error('错误代码:', audio.error?.code);
-                console.error('错误信息:', audio.error?.message);
-            });
-            
-            // 尝试播放
-            const playAudio = async () => {
-                try {
-                    await audio.play();
-                    console.log('🎶 自动播放成功');
-                } catch (error) {
-                    console.log('⚠️ 自动播放被阻止，需要用户交互:', error.message);
-                }
-            };
-            
-            // 添加用户交互检测
-            const handleFirstInteraction = () => {
-                playAudio();
-                document.removeEventListener('click', handleFirstInteraction);
-                document.removeEventListener('keydown', handleFirstInteraction);
-            };
-            
-            document.addEventListener('click', handleFirstInteraction);
-            document.addEventListener('keydown', handleFirstInteraction);
-            
-            return () => {
-                document.removeEventListener('click', handleFirstInteraction);
-            };
-        }
-    }, []);
+        const audio = audioRef.current;
+        if (!audio) return;
 
-    const toggleMute = () => {
+        // 设置音频属性
+        audio.volume = 0.3;
+        audio.loop = true;
+
+        // 添加事件监听器
+        const handlePlay = () => {
+            setIsPlaying(true);
+            setHasStarted(true); // 标记已经开始播放
+            console.log('🎶 音乐开始播放');
+        };
+
+        const handlePause = () => {
+            setIsPlaying(false);
+            console.log('⏸️ 音乐暂停');
+        };
+
+        const handleCanPlay = () => {
+            console.log('✅ 音频已准备就绪');
+            // 只在还没开始播放时尝试自动播放
+            if (!hasStarted) {
+                tryPlayMusic();
+            }
+        };
+
+        const handleError = (e) => {
+            console.error('❌ 音频错误:', e);
+        };
+
+        audio.addEventListener('play', handlePlay);
+        audio.addEventListener('pause', handlePause);
+        audio.addEventListener('canplay', handleCanPlay);
+        audio.addEventListener('error', handleError);
+
+        // 播放音乐的函数
+        const tryPlayMusic = async () => {
+            try {
+                await audio.play();
+                console.log('✅ 音乐自动播放成功！');
+                return true;
+            } catch (error) {
+                console.log('⚠️ 自动播放被阻止，等待用户交互...');
+                return false;
+            }
+        };
+
+        // 用户交互处理（只在还没开始播放时才监听）
+        const handleUserInteraction = async (e) => {
+            // 检查点击是否来自播放按钮，如果是则不处理
+            if (e.target.closest('.play-pause-button')) {
+                return;
+            }
+            
+            if (!hasStarted && !isPlaying) {
+                const success = await tryPlayMusic();
+                if (success) {
+                    console.log('🎵 通过用户交互启动音乐');
+                }
+            }
+        };
+
+        // 只在还没开始播放时才添加用户交互监听器
+        if (!hasStarted) {
+            // 立即尝试播放（可能会失败）
+            tryPlayMusic();
+
+            // 监听用户交互
+            document.addEventListener('click', handleUserInteraction, true);
+            document.addEventListener('keydown', handleUserInteraction, true);
+            document.addEventListener('touchstart', handleUserInteraction, true);
+        }
+
+        return () => {
+            audio.removeEventListener('play', handlePlay);
+            audio.removeEventListener('pause', handlePause);
+            audio.removeEventListener('canplay', handleCanPlay);
+            audio.removeEventListener('error', handleError);
+            // 清理用户交互监听器
+            document.removeEventListener('click', handleUserInteraction, true);
+            document.removeEventListener('keydown', handleUserInteraction, true);
+            document.removeEventListener('touchstart', handleUserInteraction, true);
+        };
+    }, [hasStarted, isPlaying]);
+
+    const togglePlay = (e) => {
+        e.stopPropagation(); // 阻止事件冒泡
+        
         if (audioRef.current) {
-            setIsMuted(!isMuted);
-            audioRef.current.muted = !isMuted;
-            console.log(isMuted ? '🔊 取消静音' : '🔇 静音');
+            if (isPlaying) {
+                audioRef.current.pause();
+                console.log('🎵 用户手动暂停音乐');
+            } else {
+                audioRef.current.play().catch(error => {
+                    console.log('手动播放失败:', error);
+                });
+                console.log('🎵 用户手动播放音乐');
+            }
         }
     };
 
     return (
         <div className="audio-player">
-            <audio ref={audioRef} src={bgm} />
-            <button className="mute-button" onClick={toggleMute}>
-                {isMuted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
+            <audio 
+                ref={audioRef} 
+                src={bgm} 
+                preload="auto"
+            />
+            <button 
+                className="play-pause-button" 
+                onClick={togglePlay}
+                title={isPlaying ? "暂停音乐" : "播放音乐"}
+            >
+                {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
             </button>
         </div>
     );
