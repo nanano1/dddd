@@ -65,7 +65,7 @@
   flex-direction: column;
   gap: 15px;
   position: absolute;
-  right: 260px; /* 增加边距，不紧贴边边 */
+  right: 15%; /* 增加边距，不紧贴边边 */
   max-height: 75vh; /* 限制最大高度，防止溢出 */
 }
 
