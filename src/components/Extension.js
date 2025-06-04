@@ -10,43 +10,43 @@ function Extension() {
     {
       id: 1,
       title: '动画',
-      image: '/assets/images/extension/画廊-动画.png',
+      image: '/assets/images/extension/画廊-动画@3x.png',
       category: 'animation'
     },
     {
       id: 2,
       title: '角色立绘',
-      image: '/assets/images/extension/画廊-立绘.png',
+      image: '/assets/images/extension/画廊-立绘@3x.png',
       category: 'character'
     },
     {
       id: 3,
       title: '插画&摸鱼页',
-      image: '/assets/images/extension/插画.png',
+      image: '/assets/images/extension/画廊-插画@3x.png',
       category: 'art'
     },
     {
       id: 4,
       title: '半身&头像',
-      image: '/assets/images/extension/画廊-半身.png',
+      image: '/assets/images/extension/画廊-半身@3x.png',
       category: 'concept'
     },
     {
       id: 5,
       title: '表情包',
-      image: '/assets/images/extension/画廊-表情包.png',
+      image: '/assets/images/extension/画廊-表情包@3x.png',
       category: 'scene'
     },
     {
       id: 6,
       title: 'Q版角色',
-      image: '/assets/images/extension/画廊-q版.png',
+      image: '/assets/images/extension/画廊-q版@3x.png',
       category: 'effect'
     },
     {
         id: 7,
         title: '武器&小物',
-        image: '/assets/images/extension/画廊-武器.png',
+        image: '/assets/images/extension/画廊-武器@3x.png',
         category: 'effect'
       }
   ];
@@ -133,10 +133,7 @@ function Extension() {
             <div key={item.id} className="gallery-item">
               <div className="gallery-image">
                 <img src={item.image} alt={item.title} />
-                <div className="gallery-overlay">
-                  <h3>{item.title}</h3>
-                  <span className="gallery-category">{item.category}</span>
-                </div>
+                
               </div>
             </div>
           ))}
@@ -156,13 +153,7 @@ function Extension() {
               alt="社交平台"
               className="social-platform-image"
             />
-            <div className="social-platform-overlay">
-              <h3>世界汇聚</h3>
-              <p>点击进入我们的专属社交空间</p>
-              <div className="click-hint">
-                <span>点击探索 →</span>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>

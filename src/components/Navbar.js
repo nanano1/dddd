@@ -19,7 +19,7 @@ function Navbar() {
           <Dropdown menuType="characters" />
         </li>
         <li>
-          <Link to="/story">剧情</Link>
+          <Link to="/coming-soon">剧情</Link>
           <Dropdown menuType="story" />
         </li>
         <li>

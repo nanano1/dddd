@@ -60,8 +60,9 @@ const Worldview = () => {
               <p>圆形，银铸，正面印有月纹，背面印有商会标志，标准克重1.412g，由商会统一发行</p>
             </div>
             <div className="currency-square gold">
-              <h3>黄金币</h3>
-              <p>通用货币</p>
+              <h3>狮金克</h3>
+              <p>方形，金铸，正面印有狮纹，背面印有商会标志，标准克重4.869g，由商会统一发行</p>
+
             </div>
             <div className="currency-text-area-new">
               <p>狮金克与月银章的比率由商会进行统一定价，在一定程度上会产生波动，但总体围绕1：100的比率，两者均为日常生活货币；狮金克与水晶粹的比率由市场定价，由于水晶粹数量稀少且用途更广，一般以1:1000的比率出价，按照买卖双方意愿进行合同交割，交易对象更多为高魔力者</p>
@@ -69,35 +70,28 @@ const Worldview = () => {
           </div>
           {/* 第二行：货币展示 */}
           <div className="currency-row">
-            <div className="currency-square gold">
-                <h3>水晶币</h3>
-                <p>较为重要的魔法道具以及技术类道具购买时使用，由水晶组成，拥有一定的魔法储存能力，可以储存少量魔法力—水晶币。</p>
+            <div className="currency-square cystal">
+                <h3>水晶粹</h3>
+                <p>菱形，晶体，在昏暗环境下会散发蓝色荧光，其内有魔力储藏，由学院统一发行，大多存在于高魔力者之间交易</p>
             </div>
             
             <div className="currency-display-box">
               <div className="currency-item-horizontal">
-                <img src="/assets/images/worldview/月曜石黑色.png" alt="月曜石" />
+                <img src="/assets/images/worldview/月银.png" alt="月曜石" />
                 <div className="currency-info">
-                  <h4>月曜石黑象征</h4>
-                  <p>数量：1,100</p>
-                  <p>稀有度：传说</p>
+                  <p>月银章:狮金克</p>
+                  <p>1:100</p>
                 </div>
               </div>
               <div className="currency-item-horizontal">
-                <img src="/assets/images/worldview/黄金币-光泽.png" alt="黄金币" />
+                <img src="/assets/images/worldview/狮金.png" alt="黄金币" />
                 <div className="currency-info">
-                  <h4>黄金币-光泽</h4>
-                  <p>数量：15,000</p>
-                  <p>稀有度：普通</p>
+                  <p>狮金克：水晶粹</p>
+                  <p>1:1000</p>
                 </div>
               </div>
               <div className="currency-item-horizontal">
-                <img src="/assets/images/worldview/魔法水晶.png" alt="魔法水晶" />
-                <div className="currency-info">
-                  <h4>魔法水晶</h4>
-                  <p>数量：∞</p>
-                  <p>稀有度：史诗</p>
-                </div>
+                <img src="/assets/images/worldview/水晶.png" alt="魔法水晶" />
               </div>
             </div>
           </div>
@@ -107,38 +101,38 @@ const Worldview = () => {
       {/* 种族部分 */}
       <section className="races-section">
         <h2 className="section-title">种族</h2>
-        <div className="subtitle">a liberté内生活的种族介绍</div>
+        <div className="subtitle">la liberté主要种族介绍</div>
         <div className="races-slider-container">
           <div className="races-slider">
             <div className="race-card-new human-bg">
               <img src="/assets/images/worldview/人族.png" alt="人族" />
               <h3>人族</h3>
-              <p>外貌特征与现实里的人一一又又又又或又又又又，大部分人族都有着金发蓝眼的特征，个别人族拥有不同颜色的瞳色—又也有少数人族拥有独特的瞳色，这些瞳色和魔法天赋的高低有一定关系。</p>
+              <p>种族规模庞大，拥有较为严格的阶级和制度，几乎所有人族统一居住在人族建立的城邦中，其中的绝大部分没有元素感应能力（即魔法资质），拥有相应资质的人可以选择到达一定年龄后进修学习；种族平均寿命较短，外交方面除个别不愿沟通的种族外与其他种族普遍交好，在整片大陆上占据主导地位。</p>
             </div>
             <div className="race-card-new beast-bg">
-              <img src="/assets/images/worldview/兽人.png" alt="兽人" />
-              <h3>兽人</h3>
-              <p>拥有着动物的某些特征，比如猫族拥有猫耳和猫尾，狼族拥有狼耳朵和狼尾巴等—或也有身体素质比人族更加优秀，在速度、力量、听觉、视觉等各方面都比人族要强。</p>
+              <img src="/assets/images/worldview/狐人族.png" alt="兽人" />
+              <h3>狐人族</h3>
+              <p>已经隐世的兽人族之一，族人普遍拥有能产生魅惑能力的手段，擅长幻术与欺诈，精神能力较强，但是肉体能力普遍较弱，部分实力较为强大血脉较为纯正的狐人可出现返祖（即完全兽化）的状态。在种族内部以尾数论尊卑，九尾为极，绝大部分居住在狐族领地内，种族平均寿命较长。</p>
             </div>
             <div className="race-card-new dwarf-bg">
-              <img src="/assets/images/worldview/矮人.png" alt="矮人" />
-              <h3>矮人族</h3>
-              <p>身材比人族要矮小，手工艺者拥有人族几倍的天赋，尤其是在锻造方面，矮人在大陆各地都以精湛的锻造工艺闻名，同时，矮人族的大多都拥有较为浓厚的胡须。</p>
+              <img src="/assets/images/worldview/狼人族.png" alt="矮人" />
+              <h3>狼人族</h3>
+              <p>大陆上活跃的兽人族之一，绝大部分在人族城邦之外划分领地生活，偶尔会出没在人族的城邦中进行贸易往来。寿命与人族相当，族人大部分拥有较强的身体素质，族内会定期进行集体狩猎。</p>
             </div>
             <div className="race-card-new elf-bg">
-              <img src="/assets/images/worldview/精灵.png" alt="精灵" />
-              <h3>精灵族</h3>
-              <p>拥有尖耳朵，身材修长，容貌美丽，寿命悠长，魔法天赋极高。精灵族与自然和谐共处，是森林的守护者，擅长弓箭和自然魔法。</p>
+              <img src="/assets/images/worldview/猫人族.png" alt="精灵" />
+              <h3>猫人族</h3>
+              <p>极为罕见的种族，人数及其稀少且分布极广，一般与人族或其他兽人族共同生活，大多数习惯独居，头上的猫耳为该种族特质，天生拥有较强的身体素质和元素感应能力，寿命与人族相当。</p>
             </div>
             <div className="race-card-new dragon-bg">
-              <img src="/assets/images/worldview/龙族.png" alt="龙族" />
-              <h3>龙族</h3>
-              <p>强大而神秘的种族，拥有龙的血脉和力量。龙族个体稀少但实力强大，掌握着古老的魔法知识，被其他种族敬畏。</p>
+              <img src="/assets/images/worldview/机械生命.png" alt="龙族" />
+              <h3>机械生命</h3>
+              <p>远古时代的造物，其构造的精密与复杂程度令人叹为观止，依靠其内部核心以及特定的能源提供动力，拥有较为完善的自我意识但仍然会执行程序化指令。现存寥寥无几。</p>
             </div>
             <div className="race-card-new angel-bg">
-              <img src="/assets/images/worldview/天使.png" alt="天使" />
-              <h3>天使族</h3>
-              <p>来自天界的神圣种族，拥有洁白的翅膀和强大的光明魔法。天使族以正义和善良著称，是黑暗势力的天敌。</p>
+              <img src="/assets/images/worldview/精灵族.png" alt="天使" />
+              <h3>精灵族</h3>
+              <p>隐世的种族之一，天生拥有极强的元素亲和力，根据相应地元素存在不同的领地划分，普遍长相优美，身姿矫健。寿命悠长但自然生育率极低，拥有外貌不老的特质，自命清高，但在有大事来临的关键时刻会通过族内先知的力量预知并告知其他种族。</p>
             </div>
           </div>
         </div>
@@ -147,18 +141,18 @@ const Worldview = () => {
       {/* 势力部分 */}
       <section className="factions-section">
         <h2 className="section-title">势力</h2>
-        <div className="subtitle">大陆上的主要势力组织</div>
+        <div className="subtitle">利普赫顿大陆主要势力介绍</div>
         
         {/* 工会势力 */}
         <div className="faction-group">
           <h3 className="faction-group-title">工会势力</h3>
           <div className="factions-container">
             {[
-              { src: "/assets/images/worldview/冒险者协会.png", alt: "冒险者协会" },
-              { src: "/assets/images/worldview/佣兵.png", alt: "佣兵团" },
-              { src: "/assets/images/worldview/冰霜.png", alt: "冰霜组织" },
-              { src: "/assets/images/worldview/城镇.png", alt: "城镇联盟" },
-              { src: "/assets/images/worldview/血月.png", alt: "血月会" }
+              { src: "/assets/images/worldview/冒险家协会.png", alt: "冒险者协会" },
+              { src: "/assets/images/worldview/商会.png", alt: "佣兵团" },
+              { src: "/assets/images/worldview/审判庭.png", alt: "冰霜组织" },
+              { src: "/assets/images/worldview/学校.png", alt: "城镇联盟" },
+              { src: "/assets/images/worldview/赏金猎人.png", alt: "血月会" }
             ].map((faction, index) => (
               <div 
                 key={index}
@@ -176,7 +170,7 @@ const Worldview = () => {
           <h3 className="faction-group-title">家族势力</h3>
           <div className="factions-container">
             {[
-              { src: "/assets/images/worldview/冒险者协会.png", alt: "贵族家族" },
+              { src: "/assets/images/worldview/晨星.png", alt: "贵族家族" },
               { src: "/assets/images/worldview/佣兵.png", alt: "商业家族" },
               { src: "/assets/images/worldview/冰霜.png", alt: "魔法家族" },
               { src: "/assets/images/worldview/城镇.png", alt: "军事家族" },
